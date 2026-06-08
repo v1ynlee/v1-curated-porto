@@ -1,0 +1,64 @@
+{
+  "socialLinks": [
+    {
+      "name": "Facebook",
+      "handle": "@v1ynlee",
+      "href": "https://www.facebook.com/v1ynlee",
+      "description": "Casual updates and community vibes",
+      "gradient": "from-blue-600 to-blue-700",
+      "hoverBorder": "group-hover:border-blue-500/40",
+      "hoverText": "group-hover:text-blue-400",
+      "iconName": "FacebookIcon"
+    },
+    {
+      "name": "Pinterest",
+      "handle": "@va1nlye",
+      "href": "https://www.pinterest.com/va1nlye",
+      "description": "Art boards, aesthetic panels, and mood boards",
+      "gradient": "from-red-600 to-rose-600",
+      "hoverBorder": "group-hover:border-red-500/40",
+      "hoverText": "group-hover:text-red-400",
+      "iconName": "PinterestIcon"
+    },
+    {
+      "name": "Instagram",
+      "handle": "@v1ynlee",
+      "href": "https://www.instagram.com/v1ynlee",
+      "description": "Daily manhwa snapshots and reading moments",
+      "gradient": "from-pink-600 via-purple-600 to-orange-500",
+      "hoverBorder": "group-hover:border-pink-500/40",
+      "hoverText": "group-hover:text-pink-400",
+      "iconName": "InstagramIcon"
+    },
+    {
+      "name": "YouTube",
+      "handle": "@v1ynlee_yt",
+      "href": "https://youtube.com/@v1ynlee_yt",
+      "description": "Recommendations, reactions, and reviews",
+      "gradient": "from-red-500 to-red-700",
+      "hoverBorder": "group-hover:border-red-500/40",
+      "hoverText": "group-hover:text-red-400",
+      "iconName": "YoutubeIcon"
+    },
+    {
+      "name": "Threads",
+      "handle": "@v1ynlee",
+      "href": "https://threads.net/@v1ynlee",
+      "description": "Hot takes on the latest chapter drops",
+      "gradient": "from-zinc-700 to-zinc-900",
+      "hoverBorder": "group-hover:border-zinc-400/40",
+      "hoverText": "group-hover:text-zinc-300",
+      "iconName": "ThreadsIcon"
+    },
+    {
+      "name": "Twitter / X",
+      "handle": "@v1ynlee",
+      "href": "https://x.com/v1ynlee",
+      "description": "Unfiltered thoughts on manhwa plot twists",
+      "gradient": "from-zinc-800 to-black",
+      "hoverBorder": "group-hover:border-zinc-400/40",
+      "hoverText": "group-hover:text-zinc-200",
+      "iconName": "TwitterXIcon"
+    }
+  ]
+}

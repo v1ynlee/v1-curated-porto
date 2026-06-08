@@ -1,0 +1,41 @@
+{
+  "sectionLabel": "— who am i",
+  "headingPrefix": "Hi, I'm",
+  "name": "v1ynlee",
+  "tagline": "just a hobbyist",
+  "avatar": {
+    "src": "/avatar.webp",
+    "alt": "Profile picture of v1ynlee",
+    "width": 600,
+    "height": 800
+  },
+  "badges": [
+    { "icon": "BookOpen", "label": "Reader",      "size": 14, "position": "top-right"   },
+    { "icon": "Globe",    "label": "Webtoon Fan", "size": 14, "position": "bottom-left" }
+  ],
+  "bio": [
+  "Some evenings begin with a single chapter and somehow end hours later. A good story has a way of making time feel distant, especially when paired with quiet surroundings and the right soundtrack.",
+  "I enjoy discovering all kinds of worlds, from peaceful everyday moments to grand adventures filled with impossible dreams. The variety found in digital comics is part of what makes them so easy to love.",
+  "This website is a collection of stories, characters, music, and panels that stayed with me. If even one of them leads someone toward a new favorite series, then sharing them was worth it."
+],
+  "highlightedPhrases": [
+  {
+    "text": "a single chapter",
+    "action": "underline"
+  },
+  {
+    "text": "impossible dreams",
+    "action": "highlight"
+  },
+  {
+    "text": "new favorite series",
+    "action": "underline"
+  }
+],
+  "hobbyTags": [
+    { "icon": "BookOpen", "text": "Manhwa"   },
+    { "icon": "Globe",    "text": "Manga"    },
+    { "icon": "Palette",  "text": "Manhua"   },
+    { "icon": "Star",     "text": "Webtoons" }
+  ]
+}

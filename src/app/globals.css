@@ -1,0 +1,515 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Theme tokens (per color palette) ─────────────────────────── */
+/* Default: Teal + Cyan */
+:root {
+  --accent-h: 180deg;
+  --p: #14b8a6;        /* teal-500 */
+  --p-dark: #0d9488;   /* teal-600 */
+  --p-light: #2dd4bf;  /* teal-400 */
+  --s: #06b6d4;        /* cyan-500 */
+  --s-dark: #0891b2;   /* cyan-600 */
+  --p-glow: rgba(20, 184, 166, 0.5);
+  --p-glow-soft: rgba(20, 184, 166, 0.15);
+  --p-glow-strong: rgba(20, 184, 166, 0.8);
+  --grad-from: #14b8a6;
+  --grad-via: #06b6d4;
+  --grad-to: #818cf8;
+  --cursor-color: #14b8a6;
+  --scrollbar-from: #14b8a6;
+  --scrollbar-to: #06b6d4;
+  --neon-text-shadow:
+    0 0 10px rgba(20, 184, 166, 0.9),
+    0 0 20px rgba(20, 184, 166, 0.5);
+}
+
+[data-color-theme="cyber-blue"] {
+  --p: #3b82f6;
+  --p-dark: #2563eb;
+  --p-light: #60a5fa;
+  --s: #818cf8;
+  --s-dark: #6366f1;
+  --p-glow: rgba(59, 130, 246, 0.5);
+  --p-glow-soft: rgba(59, 130, 246, 0.15);
+  --p-glow-strong: rgba(59, 130, 246, 0.8);
+  --grad-from: #3b82f6;
+  --grad-via: #818cf8;
+  --grad-to: #06b6d4;
+  --cursor-color: #3b82f6;
+  --scrollbar-from: #3b82f6;
+  --scrollbar-to: #818cf8;
+  --neon-text-shadow:
+    0 0 10px rgba(59, 130, 246, 0.9),
+    0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+[data-color-theme="emerald"] {
+  --p: #10b981;
+  --p-dark: #059669;
+  --p-light: #34d399;
+  --s: #14b8a6;
+  --s-dark: #0d9488;
+  --p-glow: rgba(16, 185, 129, 0.5);
+  --p-glow-soft: rgba(16, 185, 129, 0.15);
+  --p-glow-strong: rgba(16, 185, 129, 0.8);
+  --grad-from: #10b981;
+  --grad-via: #14b8a6;
+  --grad-to: #818cf8;
+  --cursor-color: #10b981;
+  --scrollbar-from: #10b981;
+  --scrollbar-to: #14b8a6;
+  --neon-text-shadow:
+    0 0 10px rgba(16, 185, 129, 0.9),
+    0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+[data-color-theme="purple"] {
+  --p: #8b5cf6;
+  --p-dark: #7c3aed;
+  --p-light: #a78bfa;
+  --s: #ec4899;
+  --s-dark: #db2777;
+  --p-glow: rgba(139, 92, 246, 0.5);
+  --p-glow-soft: rgba(139, 92, 246, 0.15);
+  --p-glow-strong: rgba(139, 92, 246, 0.8);
+  --grad-from: #8b5cf6;
+  --grad-via: #ec4899;
+  --grad-to: #06b6d4;
+  --cursor-color: #8b5cf6;
+  --scrollbar-from: #8b5cf6;
+  --scrollbar-to: #ec4899;
+  --neon-text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.9),
+    0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+[data-color-theme="orange"] {
+  --p: #f97316;
+  --p-dark: #ea580c;
+  --p-light: #fb923c;
+  --s: #f59e0b;
+  --s-dark: #d97706;
+  --p-glow: rgba(249, 115, 22, 0.5);
+  --p-glow-soft: rgba(249, 115, 22, 0.15);
+  --p-glow-strong: rgba(249, 115, 22, 0.8);
+  --grad-from: #f97316;
+  --grad-via: #f59e0b;
+  --grad-to: #ec4899;
+  --cursor-color: #f97316;
+  --scrollbar-from: #f97316;
+  --scrollbar-to: #f59e0b;
+  --neon-text-shadow:
+    0 0 10px rgba(249, 115, 22, 0.9),
+    0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+[data-color-theme="red"] {
+  --p: #ef4444;
+  --p-dark: #dc2626;
+  --p-light: #f87171;
+  --s: #f97316;
+  --s-dark: #ea580c;
+  --p-glow: rgba(239, 68, 68, 0.5);
+  --p-glow-soft: rgba(239, 68, 68, 0.15);
+  --p-glow-strong: rgba(239, 68, 68, 0.8);
+  --grad-from: #ef4444;
+  --grad-via: #f97316;
+  --grad-to: #f59e0b;
+  --cursor-color: #ef4444;
+  --scrollbar-from: #ef4444;
+  --scrollbar-to: #f97316;
+  --neon-text-shadow:
+    0 0 10px rgba(239, 68, 68, 0.9),
+    0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-space);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite alternate;
+  --animate-blink-cursor: blink-cursor 1s step-end infinite;
+
+  @keyframes shiny-text {
+    0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
+    30%, 60% { background-position: calc(100% + var(--shiny-width)) 0; }
+  }
+  @keyframes background-position-spin {
+    0% { background-position: top center; }
+    100% { background-position: bottom center; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
+  }
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+    }
+  70% {
+    opacity: 1;
+    }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+    }
+  }
+  @keyframes gradient {
+    to { background-position: var(--bg-size, 300%) 0; }
+  }
+  @keyframes shimmer-slide {
+    to { transform: translate(calc(100cqw - 100%), 0); }
+  }
+  @keyframes spin-around {
+    0% { transform: translateZ(0) rotate(0); }
+    15%, 35% { transform: translateZ(0) rotate(90deg); }
+    65%, 85% { transform: translateZ(0) rotate(270deg); }
+    100% { transform: translateZ(0) rotate(360deg); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes glow-pulse {
+    0% { box-shadow: 0 0 20px var(--p-glow), 0 0 40px var(--p-glow-soft); }
+    100% { box-shadow: 0 0 40px var(--p-glow-strong), 0 0 80px var(--p-glow); }
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
+
+/* ─── Light mode (:root) ─────────────────────────────────────────── */
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(0.97 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(0.97 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.94 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.7 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.12 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.94 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.88 0 0);
+  --sidebar-ring: oklch(0.7 0 0);
+
+  /* Section backgrounds for light mode */
+  --section-bg: oklch(0.99 0 0);
+  --section-bg-alt: oklch(0.96 0 0);
+  --surface: oklch(1 0 0);
+  --surface-raised: oklch(0.97 0 0);
+}
+
+/* ─── Dark mode ─────────────────────────────────────────────────── */
+.dark {
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.96 0 0);
+  --card: oklch(0.14 0 0);
+  --card-foreground: oklch(0.96 0 0);
+  --popover: oklch(0.14 0 0);
+  --popover-foreground: oklch(0.96 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.2 0 0);
+  --secondary: oklch(0.19 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.19 0 0);
+  --muted-foreground: oklch(0.58 0 0);
+  --accent: oklch(0.19 0 0);
+  --accent-foreground: oklch(0.96 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 11%);
+  --ring: oklch(0.55 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.14 0 0);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.19 0 0);
+  --sidebar-accent-foreground: oklch(0.96 0 0);
+  --sidebar-border: oklch(1 0 0 / 7%);
+  --sidebar-ring: oklch(0.55 0 0);
+
+  --section-bg: oklch(0.1 0 0);
+  --section-bg-alt: oklch(0.12 0 0);
+  --surface: oklch(0.14 0 0);
+  --surface-raised: oklch(0.17 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis takes over */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-space), var(--font-inter), sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scrollbar-from), var(--scrollbar-to));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--p-dark), var(--s-dark));
+  }
+}
+
+/* ─── View-transition (AnimatedThemeToggler) ─────────────────────── */
+[data-magicui-theme-vt="active"]::view-transition-old(root) {
+  animation: none;
+}
+[data-magicui-theme-vt="active"]::view-transition-new(root) {
+  animation: none;
+  clip-path: var(--magicui-theme-vt-clip-from, circle(0px at 50% 50%));
+}
+::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 400ms);
+}
+
+/* ─── Accent utility classes (driven by --p token) ──────────────── */
+.accent-text {
+  color: var(--p);
+}
+.accent-bg {
+  background-color: var(--p);
+}
+.accent-border {
+  border-color: var(--p);
+}
+
+/* Gradient text using palette */
+.gradient-text {
+  background: linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* CTA gradient button */
+.btn-cta {
+  background: linear-gradient(135deg, var(--p), var(--s));
+  color: #fff;
+}
+.btn-cta:hover {
+  box-shadow: 0 0 24px var(--p-glow);
+}
+
+/* Neon glow utilities */
+.neon-glow {
+  box-shadow: 0 0 20px var(--p-glow), 0 0 40px var(--p-glow-soft);
+}
+.neon-glow-strong {
+  box-shadow: 0 0 30px var(--p-glow-strong), 0 0 60px var(--p-glow);
+}
+.neon-text {
+  text-shadow: var(--neon-text-shadow);
+}
+
+/* Float animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glow pulse */
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+/* Glass card — light & dark aware */
+.glass-card {
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+/* Light mode section backgrounds */
+.section-bg {
+  background-color: var(--section-bg);
+}
+.section-bg-alt {
+  background-color: var(--section-bg-alt);
+}
+.surface {
+  background-color: var(--surface);
+}
+.surface-raised {
+  background-color: var(--surface-raised);
+}
+
+/*
+ * Premium section backgrounds — layered gradient over the flat base.
+ * These replace section-bg / section-bg-alt in the Favorites and
+ * Characters sections so each area has its own visual identity.
+ * The gradient layers use very low opacity so they read correctly
+ * in both light mode and dark mode.
+ */
+.section-bg-favorites {
+  background-color: var(--section-bg-alt);
+  background-image:
+    /* Primary radial — top-center warm spotlight */
+    radial-gradient(
+      ellipse 70% 45% at 50% 0%,
+      color-mix(in srgb, var(--p) 8%, transparent),
+      transparent 75%
+    ),
+    /* Secondary — soft left-corner accent */
+    radial-gradient(
+      ellipse 40% 30% at 0% 60%,
+      color-mix(in srgb, var(--s) 5%, transparent),
+      transparent 80%
+    );
+}
+
+.section-bg-characters {
+  background-color: var(--section-bg);
+  background-image:
+    /* Primary radial — bottom-right corner glow */
+    radial-gradient(
+      ellipse 55% 50% at 100% 100%,
+      color-mix(in srgb, var(--s) 9%, transparent),
+      transparent 70%
+    ),
+    /* Secondary — top-left soft wash */
+    radial-gradient(
+      ellipse 40% 35% at 0% 0%,
+      color-mix(in srgb, var(--p) 5%, transparent),
+      transparent 80%
+    ),
+    /* Subtle noise-like diagonal to break flatness */
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface) 0%, transparent) 0%,
+      color-mix(in srgb, var(--p) 2%, transparent) 50%,
+      color-mix(in srgb, var(--surface) 0%, transparent) 100%
+    );
+}
+
+/* Accent hover link */
+.accent-link {
+  color: var(--muted-foreground);
+  transition: color 0.2s;
+}
+.accent-link:hover {
+  color: var(--p);
+}
+
+/* ─── Music player marquee title ────────────────────────────────── */
+/*
+ * Applied directly via inline style in MarqueeTitle component.
+ * The @keyframes must live in a global sheet so the browser finds it.
+ */
+@keyframes marquee-title {
+  0%   { transform: translateX(0%); }
+  /* pause at start */
+  10%  { transform: translateX(0%); }
+  /* scroll to end — the duplicate copy starts just after the padding-right */
+  90%  { transform: translateX(-50%); }
+  /* pause at end before looping */
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Hide scrollbars while keeping scroll functional ───────────── */
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE / Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;             /* Chrome / Safari / Opera */
+}

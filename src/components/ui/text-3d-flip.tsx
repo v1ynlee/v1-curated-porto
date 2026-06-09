@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, {
   memo,
@@ -7,68 +7,68 @@ import React, {
   useMemo,
   useRef,
   type ElementType,
-} from "react"
+} from "react";
 import {
   useAnimate,
   type AnimationOptions,
   type ValueAnimationTransition,
-} from "motion/react"
+} from "motion/react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const HAS_SEGMENTER = typeof Intl !== "undefined" && "Segmenter" in Intl
+const HAS_SEGMENTER = typeof Intl !== "undefined" && "Segmenter" in Intl;
 
 const splitIntoCharacters = (text: string): string[] => {
   if (HAS_SEGMENTER) {
-    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" })
-    return Array.from(segmenter.segment(text), ({ segment }) => segment)
+    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+    return Array.from(segmenter.segment(text), ({ segment }) => segment);
   }
-  return Array.from(text)
-}
+  return Array.from(text);
+};
 
 const extractTextFromChildren = (children: React.ReactNode): string => {
-  if (children == null) return ""
-  if (typeof children === "string") return children
-  if (typeof children === "number") return String(children)
+  if (children == null) return "";
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
 
   if (Array.isArray(children)) {
-    return children.map(extractTextFromChildren).join("")
+    return children.map(extractTextFromChildren).join("");
   }
 
   if (React.isValidElement(children)) {
-    const props = children.props as Record<string, unknown>
-    const childText = props.children as React.ReactNode
+    const props = children.props as Record<string, unknown>;
+    const childText = props.children as React.ReactNode;
     if (childText != null) {
-      return extractTextFromChildren(childText)
+      return extractTextFromChildren(childText);
     }
   }
 
-  return ""
-}
+  return "";
+};
 
 const ROTATION_MAP = {
   top: "rotateX(90deg)",
   right: "rotateY(90deg)",
   bottom: "rotateX(-90deg)",
   left: "rotateY(-90deg)",
-} as const
+} as const;
 
 const DEFAULT_TRANSITION: ValueAnimationTransition = {
   type: "spring",
   damping: 30,
   stiffness: 300,
-}
+};
 
 interface Text3DFlipProps {
-  children: React.ReactNode
-  as?: ElementType
-  className?: string
-  textClassName?: string
-  flipTextClassName?: string
-  staggerDuration?: number
-  staggerFrom?: "first" | "last" | "center" | number | "random"
-  transition?: ValueAnimationTransition | AnimationOptions
-  rotateDirection?: "top" | "right" | "bottom" | "left"
+  children: React.ReactNode;
+  as?: ElementType;
+  className?: string;
+  textClassName?: string;
+  flipTextClassName?: string;
+  staggerDuration?: number;
+  staggerFrom?: "first" | "last" | "center" | number | "random";
+  transition?: ValueAnimationTransition | AnimationOptions;
+  rotateDirection?: "top" | "right" | "bottom" | "left";
 }
 
 const Text3DFlip = ({
@@ -83,76 +83,76 @@ const Text3DFlip = ({
   rotateDirection = "right",
   ...props
 }: Text3DFlipProps) => {
-  const isAnimatingRef = useRef(false)
-  const isMountedRef = useRef(false)
-  const [scope, animate] = useAnimate()
+  const isAnimatingRef = useRef(false);
+  const isMountedRef = useRef(false);
+  const [scope, animate] = useAnimate();
 
-  const rotationTransform = ROTATION_MAP[rotateDirection]
+  const rotationTransform = ROTATION_MAP[rotateDirection];
 
   useEffect(() => {
-    isMountedRef.current = true
+    isMountedRef.current = true;
 
     return () => {
-      isMountedRef.current = false
-      isAnimatingRef.current = false
-    }
-  }, [])
+      isMountedRef.current = false;
+      isAnimatingRef.current = false;
+    };
+  }, []);
 
   const text = useMemo(() => {
     try {
-      return extractTextFromChildren(children)
+      return extractTextFromChildren(children);
     } catch {
-      return ""
+      return "";
     }
-  }, [children])
+  }, [children]);
 
   const characters = useMemo(() => {
-    const words = text.split(" ")
+    const words = text.split(" ");
     return words.map((word, i) => ({
       characters: splitIntoCharacters(word),
       needsSpace: i !== words.length - 1,
-    }))
-  }, [text])
+    }));
+  }, [text]);
 
   const charOffsets = useMemo(() => {
-    const offsets = [0]
+    const offsets = [0];
     for (const word of characters) {
-      offsets.push(offsets.at(-1)! + word.characters.length)
+      offsets.push(offsets.at(-1)! + word.characters.length);
     }
-    return offsets
-  }, [characters])
+    return offsets;
+  }, [characters]);
 
   const getStaggerDelay = useCallback(
     (index: number, totalChars: number) => {
-      if (staggerFrom === "first") return index * staggerDuration
+      if (staggerFrom === "first") return index * staggerDuration;
       if (staggerFrom === "last")
-        return (totalChars - 1 - index) * staggerDuration
+        return (totalChars - 1 - index) * staggerDuration;
       if (staggerFrom === "center") {
-        const center = Math.floor(totalChars / 2)
-        return Math.abs(center - index) * staggerDuration
+        const center = Math.floor(totalChars / 2);
+        return Math.abs(center - index) * staggerDuration;
       }
       if (staggerFrom === "random") {
-        const randomIndex = Math.floor(Math.random() * totalChars)
-        return Math.abs(randomIndex - index) * staggerDuration
+        const randomIndex = Math.floor(Math.random() * totalChars);
+        return Math.abs(randomIndex - index) * staggerDuration;
       }
-      return Math.abs(staggerFrom - index) * staggerDuration
+      return Math.abs(staggerFrom - index) * staggerDuration;
     },
-    [staggerFrom, staggerDuration]
-  )
+    [staggerFrom, staggerDuration],
+  );
 
   const handleHoverStart = useCallback(async () => {
-    if (isAnimatingRef.current) return
-    isAnimatingRef.current = true
+    if (isAnimatingRef.current) return;
+    isAnimatingRef.current = true;
 
     try {
       const totalChars = characters.reduce(
         (sum, word) => sum + word.characters.length,
-        0
-      )
+        0,
+      );
 
       const delays = Array.from({ length: totalChars }, (_, i) =>
-        getStaggerDelay(i, totalChars)
-      )
+        getStaggerDelay(i, totalChars),
+      );
 
       await animate(
         ".text-3d-flip-char",
@@ -160,22 +160,22 @@ const Text3DFlip = ({
         {
           ...transition,
           delay: (i: number) => delays[i],
-        }
-      )
+        },
+      );
 
-      if (!isMountedRef.current) return
+      if (!isMountedRef.current) return;
 
       await animate(
         ".text-3d-flip-char",
         { transform: "rotateX(0deg) rotateY(0deg)" },
-        { duration: 0 }
-      )
+        { duration: 0 },
+      );
     } finally {
       if (isMountedRef.current) {
-        isAnimatingRef.current = false
+        isAnimatingRef.current = false;
       }
     }
-  }, [characters, transition, getStaggerDelay, rotationTransform, animate])
+  }, [characters, transition, getStaggerDelay, rotationTransform, animate]);
 
   return (
     <ElementTag
@@ -201,14 +201,14 @@ const Text3DFlip = ({
         </span>
       ))}
     </ElementTag>
-  )
-}
+  );
+};
 
 interface CharBoxProps {
-  char: string
-  textClassName?: string
-  flipTextClassName?: string
-  rotateDirection: "top" | "right" | "bottom" | "left"
+  char: string;
+  textClassName?: string;
+  flipTextClassName?: string;
+  rotateDirection: "top" | "right" | "bottom" | "left";
 }
 
 const SECOND_FACE_TRANSFORMS = {
@@ -217,21 +217,21 @@ const SECOND_FACE_TRANSFORMS = {
     "rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(-50%) rotateY(-90deg) translateX(50%)",
   bottom: "rotateX(90deg) translateZ(0.5lh)",
   left: "rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(50%) rotateY(-90deg) translateX(50%)",
-} as const
+} as const;
 
 const FRONT_FACE_TRANSFORMS = {
   top: "translateZ(0.5lh)",
   bottom: "translateZ(0.5lh)",
   left: "rotateY(90deg) translateX(50%) rotateY(-90deg)",
   right: "rotateY(-90deg) translateX(50%) rotateY(90deg)",
-} as const
+} as const;
 
 const CONTAINER_TRANSFORMS = {
   top: "translateZ(-0.5lh)",
   bottom: "translateZ(-0.5lh)",
   left: "rotateY(90deg) translateX(50%) rotateY(-90deg)",
   right: "rotateY(90deg) translateX(50%) rotateY(-90deg)",
-} as const
+} as const;
 
 const CharBox = memo(
   ({
@@ -253,17 +253,17 @@ const CharBox = memo(
       <span
         className={cn(
           "absolute top-0 left-0 h-[1lh] backface-hidden",
-          flipTextClassName
+          flipTextClassName,
         )}
         style={{ transform: SECOND_FACE_TRANSFORMS[rotateDirection] }}
       >
         {char}
       </span>
     </span>
-  )
-)
+  ),
+);
 
-CharBox.displayName = "CharBox"
-Text3DFlip.displayName = "Text3DFlip"
+CharBox.displayName = "CharBox";
+Text3DFlip.displayName = "Text3DFlip";
 
-export default Text3DFlip
+export default Text3DFlip;

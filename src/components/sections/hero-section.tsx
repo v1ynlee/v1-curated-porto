@@ -23,7 +23,9 @@ export function HeroSection() {
   const scrollToSection = (href: string) => {
     const el = document.querySelector(href);
     if (!el) return;
-    const w = window as typeof window & { lenis?: { scrollTo: (t: Element, o?: object) => void } };
+    const w = window as typeof window & {
+      lenis?: { scrollTo: (t: Element, o?: object) => void };
+    };
     if (w.lenis) w.lenis.scrollTo(el, { offset: -80 });
     else el.scrollIntoView({ behavior: "smooth" });
   };
@@ -107,9 +109,17 @@ export function HeroSection() {
 
         {/* Typing animation subtitle */}
         <BlurFade delay={0.35} duration={0.8}>
-          <div className="text-xl sm:text-2xl font-light mb-3 h-8" style={{ color: "var(--p)" }}>
+          <div
+            className="text-xl sm:text-2xl font-light mb-3 h-8"
+            style={{ color: "var(--p)" }}
+          >
             <TypingAnimation
-              words={["Manhwa Reader", "Manga Lover", "Manhua Fan", "Just Vibing"]}
+              words={[
+                "Manhwa Reader",
+                "Manga Lover",
+                "Manhua Fan",
+                "Just Vibing",
+              ]}
               loop
               duration={80}
               pauseDelay={2000}
@@ -164,7 +174,9 @@ export function HeroSection() {
             <span>scroll</span>
             <div
               className="w-px h-12 animate-pulse"
-              style={{ background: `linear-gradient(to bottom, var(--p), transparent)` }}
+              style={{
+                background: `linear-gradient(to bottom, var(--p), transparent)`,
+              }}
             />
           </div>
         </BlurFade>

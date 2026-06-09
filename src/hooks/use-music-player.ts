@@ -29,7 +29,9 @@ function readStoredVolume(): number | null {
     const raw = localStorage.getItem(VOLUME_STORAGE_KEY);
     if (raw === null) return null;
     const parsed = Number(raw);
-    return Number.isFinite(parsed) && parsed >= 0 && parsed <= 1 ? parsed : null;
+    return Number.isFinite(parsed) && parsed >= 0 && parsed <= 1
+      ? parsed
+      : null;
   } catch {
     return null;
   }
@@ -85,7 +87,7 @@ export function useMusicPlayer() {
         audioRef.current.volume = saved;
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Keep a stable ref to currentIndex so the `ended` handler never stales.
@@ -128,15 +130,15 @@ export function useMusicPlayer() {
       setDuration(audio.duration);
       setIsLoading(false);
     };
-    const onWaiting  = () => setIsLoading(true);
-    const onCanPlay  = () => setIsLoading(false);
-    const onPlay     = () => setIsPlaying(true);
-    const onPause    = () => setIsPlaying(false);
+    const onWaiting = () => setIsLoading(true);
+    const onCanPlay = () => setIsLoading(false);
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
 
     // `onEnded` reads from refs so it is never stale even though it is defined
     // once per audio element mount.
     const onEnded = () => {
-      const idx  = currentIndexRef.current;
+      const idx = currentIndexRef.current;
       const last = playlist.length - 1;
 
       if (loopRef.current) {
@@ -159,22 +161,22 @@ export function useMusicPlayer() {
       // else: last track finished, loop is off → stop silently.
     };
 
-    audio.addEventListener("timeupdate",    onTimeUpdate);
+    audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadedmetadata", onLoaded);
-    audio.addEventListener("waiting",       onWaiting);
-    audio.addEventListener("canplay",       onCanPlay);
-    audio.addEventListener("ended",         onEnded);
-    audio.addEventListener("play",          onPlay);
-    audio.addEventListener("pause",         onPause);
+    audio.addEventListener("waiting", onWaiting);
+    audio.addEventListener("canplay", onCanPlay);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
 
     return () => {
-      audio.removeEventListener("timeupdate",    onTimeUpdate);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("loadedmetadata", onLoaded);
-      audio.removeEventListener("waiting",       onWaiting);
-      audio.removeEventListener("canplay",       onCanPlay);
-      audio.removeEventListener("ended",         onEnded);
-      audio.removeEventListener("play",          onPlay);
-      audio.removeEventListener("pause",         onPause);
+      audio.removeEventListener("waiting", onWaiting);
+      audio.removeEventListener("canplay", onCanPlay);
+      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
     };
     // currentIndex as a dep re-registers listeners on every track mount
     // (the component keys the <audio> element by currentIndex).

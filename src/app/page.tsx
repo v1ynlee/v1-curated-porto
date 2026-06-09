@@ -15,7 +15,12 @@ export default function Home() {
   return (
     <main>
       <SmoothCursor
-        springConfig={{ damping: 45, stiffness: 400, mass: 1, restDelta: 0.001 }}
+        springConfig={{
+          damping: 45,
+          stiffness: 400,
+          mass: 1,
+          restDelta: 0.001,
+        }}
       />
       <Navbar />
       <HeroSection />
@@ -35,7 +40,10 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-5">
           {/* Mobile: copyright only */}
-          <p className="sm:hidden text-xs text-center" style={{ color: "var(--muted-foreground)" }}>
+          <p
+            className="sm:hidden text-xs text-center"
+            style={{ color: "var(--muted-foreground)" }}
+          >
             &copy; 2026 v1ynlee. Made with love and too many late-night reads.
           </p>
 
@@ -43,7 +51,10 @@ export default function Home() {
           <div className="hidden sm:flex flex-row items-center justify-between gap-4">
             <div>
               <p className="font-bold text-lg gradient-text">v1ynlee</p>
-              <p className="text-xs mt-0.5" style={{ color: "var(--muted-foreground)" }}>
+              <p
+                className="text-xs mt-0.5"
+                style={{ color: "var(--muted-foreground)" }}
+              >
                 just a hobbyist
               </p>
             </div>
@@ -56,7 +67,10 @@ export default function Home() {
                 style={{ background: "var(--p)" }}
                 aria-hidden="true"
               />
-              <span className="text-xs" style={{ color: "var(--muted-foreground)" }}>
+              <span
+                className="text-xs"
+                style={{ color: "var(--muted-foreground)" }}
+              >
                 Always reading
               </span>
             </div>

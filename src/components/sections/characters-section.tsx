@@ -82,14 +82,14 @@ function RotatingCharacterCover({ char }: { char: Character }) {
   const { idx, dir } = useCoverRotation(char.coverTotal);
   const [visible, setVisible] = useState(true);
   const [displayIdx, setDisplayIdx] = useState(idx);
-  const [imgErrored, setImgErrored] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
 
   useEffect(() => {
     if (char.coverTotal <= 1) return;
     setVisible(false);
     const t = setTimeout(() => {
       setDisplayIdx(idx);
-      setImgErrored(false); // reset error state when switching to new image
+      setImgFailed(false); // reset per-rotation so next image gets a fresh attempt
       setVisible(true);
     }, 280);
     return () => clearTimeout(t);
@@ -98,37 +98,43 @@ function RotatingCharacterCover({ char }: { char: Character }) {
 
   const translateOut = dir === "right" ? "-10px" : "10px";
 
-  if (imgErrored) {
-    return (
-      <div
-        className="absolute inset-0 flex items-center justify-center text-5xl font-black"
-        style={{
-          background: "linear-gradient(135deg, var(--p), var(--s))",
-          color: "rgba(255,255,255,0.2)",
-        }}
-        aria-hidden="true"
-      >
-        {char.name.at(0)}
-      </div>
-    );
-  }
-
   return (
-    <Image
-      src={coverUrl(char, displayIdx)}
-      alt={`${char.name} from ${char.from}`}
-      fill
-      className="object-cover transition-transform duration-500 group-hover:scale-105"
-      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-      loading="lazy"
-      onError={() => setImgErrored(true)}
-      unoptimized
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateX(0)" : `translateX(${translateOut})`,
-        transition: "opacity 280ms ease, transform 280ms ease",
-      }}
-    />
+    <>
+      {/*
+       * Always render the Image element so the <img> stays in the DOM.
+       * When the CDN file is missing, show the gradient initial letter
+       * as an overlay — the img remains but is invisible behind it.
+       */}
+      <Image
+        src={coverUrl(char, displayIdx)}
+        alt={`${char.name} from ${char.from}`}
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+        loading="lazy"
+        onError={() => setImgFailed(true)}
+        unoptimized
+        style={{
+          opacity: visible && !imgFailed ? 1 : 0,
+          transform: visible ? "translateX(0)" : `translateX(${translateOut})`,
+          transition: "opacity 280ms ease, transform 280ms ease",
+        }}
+      />
+
+      {/* Gradient letter fallback — shown as overlay when image fails */}
+      {imgFailed && (
+        <div
+          className="absolute inset-0 flex items-center justify-center text-5xl font-black"
+          style={{
+            background: "linear-gradient(135deg, var(--p), var(--s))",
+            color: "rgba(255,255,255,0.2)",
+          }}
+          aria-hidden="true"
+        >
+          {char.name.at(0)}
+        </div>
+      )}
+    </>
   );
 }
 

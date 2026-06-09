@@ -10,11 +10,18 @@ import { Meteors } from "@/components/ui/meteors";
 
 // ─── Floating manga panel decorations ─────────────────────────────────────────
 const panels = [
-  { text: "???", delay: 0,    x: "8%",  y: "18%", rot: "-8deg",  size: "text-lg"  },
-  { text: "!!",  delay: 0.15, x: "82%", y: "14%", rot:  "6deg",  size: "text-xl"  },
-  { text: "…",   delay: 0.25, x: "12%", y: "70%", rot: "-4deg",  size: "text-2xl" },
-  { text: "!?",  delay: 0.1,  x: "78%", y: "65%", rot:  "10deg", size: "text-lg"  },
-  { text: "☆",   delay: 0.3,  x: "50%", y: "8%",  rot:  "0deg",  size: "text-base"},
+  { text: "???", delay: 0, x: "8%", y: "18%", rot: "-8deg", size: "text-lg" },
+  { text: "!!", delay: 0.15, x: "82%", y: "14%", rot: "6deg", size: "text-xl" },
+  {
+    text: "…",
+    delay: 0.25,
+    x: "12%",
+    y: "70%",
+    rot: "-4deg",
+    size: "text-2xl",
+  },
+  { text: "!?", delay: 0.1, x: "78%", y: "65%", rot: "10deg", size: "text-lg" },
+  { text: "☆", delay: 0.3, x: "50%", y: "8%", rot: "0deg", size: "text-base" },
 ];
 
 export default function NotFound() {
@@ -37,7 +44,7 @@ export default function NotFound() {
     let t = 0;
 
     const resize = () => {
-      canvas.width  = canvas.offsetWidth;
+      canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
     resize();
@@ -46,7 +53,7 @@ export default function NotFound() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const spacing = 32;
-      const cols = Math.ceil(canvas.width  / spacing) + 1;
+      const cols = Math.ceil(canvas.width / spacing) + 1;
       const rows = Math.ceil(canvas.height / spacing) + 1;
 
       for (let r = 0; r < rows; r++) {
@@ -71,7 +78,7 @@ export default function NotFound() {
   }, [mounted]);
 
   return (
-    <div className="min-h-full flex flex-col bg-[var(--background)]">
+    <div className="min-h-full flex flex-col bg-background">
       <Navbar />
 
       <main
@@ -87,7 +94,10 @@ export default function NotFound() {
         />
 
         {/* Meteor shower */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+          aria-hidden="true"
+        >
           <Meteors
             number={14}
             minDelay={0.3}
@@ -95,7 +105,7 @@ export default function NotFound() {
             minDuration={4}
             maxDuration={12}
             angle={215}
-            className="bg-[var(--p)] shadow-[0_0_4px_var(--p)]"
+            className="bg-(--p) shadow-[0_0_4px_var(--p)]"
           />
         </div>
 
@@ -123,13 +133,13 @@ export default function NotFound() {
                         animate-[fadeInFloat_1s_ease_forwards]`}
             style={{
               left: x,
-              top:  y,
-              rotate:           rot,
-              animationDelay:   `${delay + 0.4}s`,
-              color:            "var(--p)",
-              opacity:          0,
-              filter:           "drop-shadow(0 0 6px var(--p-glow))",
-              fontFamily:       "var(--font-space), sans-serif",
+              top: y,
+              rotate: rot,
+              animationDelay: `${delay + 0.4}s`,
+              color: "var(--p)",
+              opacity: 0,
+              filter: "drop-shadow(0 0 6px var(--p-glow))",
+              fontFamily: "var(--font-space), sans-serif",
             }}
           >
             {text}
@@ -145,11 +155,12 @@ export default function NotFound() {
                 className="block text-[9rem] sm:text-[12rem] font-black leading-none
                            select-none tabular-nums"
                 style={{
-                  background:          "linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to))",
+                  background:
+                    "linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip:      "text",
-                  filter:              "drop-shadow(0 0 40px var(--p-glow))",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 40px var(--p-glow))",
                 }}
                 aria-hidden="true"
               >
@@ -159,7 +170,10 @@ export default function NotFound() {
               <BookOpen
                 size={28}
                 className="absolute left-1/2 bottom-1 -translate-x-1/2"
-                style={{ color: "var(--p)", filter: "drop-shadow(0 0 8px var(--p-glow))" }}
+                style={{
+                  color: "var(--p)",
+                  filter: "drop-shadow(0 0 8px var(--p-glow))",
+                }}
                 aria-hidden="true"
               />
             </div>
@@ -180,8 +194,9 @@ export default function NotFound() {
               className="text-sm sm:text-base leading-relaxed mb-8 max-w-sm"
               style={{ color: "var(--muted-foreground)" }}
             >
-              Looks like this chapter was never published — or maybe it was axed before
-              you got here. Either way, there&#39;s nothing to read on this page.
+              Looks like this chapter was never published — or maybe it was axed
+              before you got here. Either way, there&#39;s nothing to read on
+              this page.
             </p>
           </BlurFade>
 
@@ -193,7 +208,9 @@ export default function NotFound() {
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold
                            text-white text-sm transition-all duration-300 hover:scale-105
                            hover:shadow-[0_0_28px_var(--p-glow)]"
-                style={{ background: "linear-gradient(135deg, var(--p), var(--s))" }}
+                style={{
+                  background: "linear-gradient(135deg, var(--p), var(--s))",
+                }}
               >
                 <Home size={15} aria-hidden="true" />
                 Back to Home
@@ -208,8 +225,8 @@ export default function NotFound() {
                            hover:bg-[var(--p-glow-soft)]"
                 style={{
                   borderColor: "var(--border)",
-                  color:       "var(--muted-foreground)",
-                  background:  "var(--surface)",
+                  color: "var(--muted-foreground)",
+                  background: "var(--surface)",
                 }}
               >
                 <ArrowLeft size={15} aria-hidden="true" />

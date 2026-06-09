@@ -3,8 +3,10 @@
 import { motion, useScroll, type MotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 
-interface ScrollProgressProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
+interface ScrollProgressProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  keyof MotionProps
+> {
   ref?: React.Ref<HTMLDivElement>;
 }
 
@@ -18,7 +20,11 @@ interface ScrollProgressProps
  * Color is driven entirely by the active color-theme CSS custom properties
  * (`--p`, `--s`) so it automatically updates when the user switches themes.
  */
-export function ScrollProgress({ className, ref, ...props }: ScrollProgressProps) {
+export function ScrollProgress({
+  className,
+  ref,
+  ...props
+}: ScrollProgressProps) {
   const { scrollYProgress } = useScroll();
 
   return (

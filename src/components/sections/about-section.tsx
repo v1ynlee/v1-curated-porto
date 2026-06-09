@@ -4,12 +4,7 @@ import Image from "next/image";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Highlighter } from "@/components/ui/highlighter";
-import {
-  BookOpen,
-  Palette,
-  Globe,
-  Star,
-} from "lucide-react";
+import { BookOpen, Palette, Globe, Star } from "lucide-react";
 import aboutData from "@/../public/data/about.json";
 import statsData from "@/../public/data/stats.json";
 import type { AboutData } from "@/types/about";
@@ -17,19 +12,23 @@ import type { StatItem } from "@/types/stats";
 
 // ─── Typed data ───────────────────────────────────────────────────────────────
 const about = aboutData as AboutData;
-const stats  = statsData.stats as StatItem[];
+const stats = statsData.stats as StatItem[];
 
 // ─── Icon registry ────────────────────────────────────────────────────────────
 const iconMap: Record<
   string,
-  React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>
+  React.ComponentType<{
+    size?: number;
+    className?: string;
+    style?: React.CSSProperties;
+  }>
 > = { BookOpen, Globe, Palette, Star };
 
 // ─── Derived data ─────────────────────────────────────────────────────────────
 const badges = about.badges.map((b) => ({
-  icon:     iconMap[b.icon] ?? BookOpen,
-  label:    b.label,
-  size:     b.size,
+  icon: iconMap[b.icon] ?? BookOpen,
+  label: b.label,
+  size: b.size,
   position: b.position,
 }));
 
@@ -52,8 +51,8 @@ function splitAroundPhrase(
   if (idx === -1) return null;
   return {
     before: text.slice(0, idx),
-    match:  text.slice(idx, idx + phrase.length),
-    after:  text.slice(idx + phrase.length),
+    match: text.slice(idx, idx + phrase.length),
+    after: text.slice(idx + phrase.length),
   };
 }
 
@@ -94,7 +93,10 @@ export function AboutSection() {
                 {/* Glow ring */}
                 <div
                   className="absolute inset-0 rounded-2xl blur-2xl opacity-40 pointer-events-none"
-                  style={{ background: "radial-gradient(circle, var(--p), transparent)" }}
+                  style={{
+                    background:
+                      "radial-gradient(circle, var(--p), transparent)",
+                  }}
                   aria-hidden="true"
                 />
                 <div className="relative w-72 h-96 sm:w-80 sm:h-[28rem] rounded-2xl overflow-hidden animate-glow-pulse">
@@ -149,14 +151,14 @@ export function AboutSection() {
 
             {/* Bio paragraphs — 0 and 1 contain highlighted phrases */}
             {[0, 1, 2].map((i) => {
-              const text   = about.bio[i];
+              const text = about.bio[i];
               const highlight = about.highlightedPhrases[i];
               const parts = highlight
-  ? splitAroundPhrase(text, highlight.text)
-  : null;
+                ? splitAroundPhrase(text, highlight.text)
+                : null;
               // const parts  = phrase ? splitAroundPhrase(text, phrase) : null;
-              const delay  = 0.2 + i * 0.05;
-              const muted  = i > 0;
+              const delay = 0.2 + i * 0.05;
+              const muted = i > 0;
 
               return (
                 <BlurFade key={i} delay={delay} inView>
@@ -166,7 +168,11 @@ export function AboutSection() {
                     {parts ? (
                       <>
                         {parts.before}
-                        <Highlighter color="var(--p-glow-soft)" action={highlight.action} isView>
+                        <Highlighter
+                          color="var(--p-glow-soft)"
+                          action={highlight.action}
+                          isView
+                        >
                           {parts.match}
                         </Highlighter>
                         {parts.after}
@@ -184,7 +190,9 @@ export function AboutSection() {
               <div className="flex flex-wrap gap-6 pt-4">
                 {stats.map(({ label, value }) => (
                   <div key={label} className="flex flex-col gap-1">
-                    <span className="text-2xl font-bold gradient-text">{value}</span>
+                    <span className="text-2xl font-bold gradient-text">
+                      {value}
+                    </span>
                     <span
                       className="text-xs tracking-wide uppercase"
                       style={{ color: "var(--muted-foreground)" }}

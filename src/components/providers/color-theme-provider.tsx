@@ -17,8 +17,13 @@ const ColorThemeContext = createContext<ColorThemeContextValue>({
   setColorTheme: () => undefined,
 });
 
-export function ColorThemeProvider({ children }: { children: React.ReactNode }) {
-  const [colorTheme, setColorThemeState] = useState<ColorTheme>(DEFAULT_THEME_ID);
+export function ColorThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [colorTheme, setColorThemeState] =
+    useState<ColorTheme>(DEFAULT_THEME_ID);
 
   useEffect(() => {
     const saved = localStorage.getItem("color-theme") as ColorTheme | null;

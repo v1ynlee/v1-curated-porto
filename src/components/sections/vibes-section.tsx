@@ -3,7 +3,10 @@
 import { BlurFade } from "@/components/ui/blur-fade";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Highlighter } from "@/components/ui/highlighter";
-import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/ui/scroll-based-velocity";
 import Text3DFlip from "@/components/ui/text-3d-flip";
 import {
   Sword,
@@ -22,33 +25,72 @@ import {
 
 type Genre = {
   label: string;
-  icon: React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>;
+  icon: React.ComponentType<{
+    size?: number;
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
   desc: string;
   primary?: boolean;
 };
 
 const genres: Genre[] = [
-  { label: "Action", icon: Sword, desc: "Adrenaline-pumping sequences", primary: true },
-  { label: "Fantasy", icon: Sparkles, desc: "Boundless magical worlds", primary: true },
+  {
+    label: "Action",
+    icon: Sword,
+    desc: "Adrenaline-pumping sequences",
+    primary: true,
+  },
+  {
+    label: "Fantasy",
+    icon: Sparkles,
+    desc: "Boundless magical worlds",
+    primary: true,
+  },
   { label: "Psychological", icon: Brain, desc: "Mind-bending narratives" },
   { label: "Romance", icon: Heart, desc: "Complex relationships" },
-  { label: "Slice of Life", icon: Cloud, desc: "Everyday moments, deeply felt" },
+  {
+    label: "Slice of Life",
+    icon: Cloud,
+    desc: "Everyday moments, deeply felt",
+  },
   { label: "Sci-fi", icon: Zap, desc: "Future worlds and tech" },
   { label: "Horror", icon: Ghost, desc: "Unsettling dread" },
   { label: "Historical", icon: Shield, desc: "Epic eras reimagined" },
-  { label: "Adventure", icon: Compass, desc: "Journeys without limit", primary: true },
+  {
+    label: "Adventure",
+    icon: Compass,
+    desc: "Journeys without limit",
+    primary: true,
+  },
   { label: "Thriller", icon: Flame, desc: "Heart-racing tension" },
   { label: "Music", icon: Music, desc: "Rhythm-driven stories" },
   { label: "Time Travel", icon: Clock, desc: "Paradoxes and second chances" },
 ];
 
 const moodBannerRow1 = [
-  "Solo Leveling", "Tower of God", "Vinland Saga", "Vagabond", "Omniscient Reader",
-  "Return of the Blossoming Blade", "Eleceed", "Noblesse", "A Returner's Magic", "Blue Lock",
+  "Solo Leveling",
+  "Tower of God",
+  "Vinland Saga",
+  "Vagabond",
+  "Omniscient Reader",
+  "Return of the Blossoming Blade",
+  "Eleceed",
+  "Noblesse",
+  "A Returner's Magic",
+  "Blue Lock",
 ];
 const moodBannerRow2 = [
-  "Chainsaw Man", "Jujutsu Kaisen", "Berserk", "Claymore", "Bleach",
-  "Fullmetal Alchemist", "Attack on Titan", "One Piece", "Hunter x Hunter", "Slam Dunk",
+  "Chainsaw Man",
+  "Jujutsu Kaisen",
+  "Berserk",
+  "Claymore",
+  "Bleach",
+  "Fullmetal Alchemist",
+  "Attack on Titan",
+  "One Piece",
+  "Hunter x Hunter",
+  "Slam Dunk",
 ];
 
 export function VibesSection() {
@@ -128,7 +170,8 @@ export function VibesSection() {
           </BlurFade>
           <BlurFade delay={0.15} inView>
             <p className="text-[var(--muted-foreground)] max-w-md mx-auto">
-              I'll read almost anything — but these genres speak to my soul the most.
+              I'll read almost anything — but these genres speak to my soul the
+              most.
             </p>
           </BlurFade>
         </div>
@@ -141,9 +184,10 @@ export function VibesSection() {
               <BlurFade key={genre.label} delay={0.05 * i} inView>
                 <div
                   className={`group relative p-4 rounded-xl border transition-all duration-300 cursor-default
-                    ${genre.primary
-                      ? "border-[var(--p-glow)] bg-[var(--p-glow-soft)] hover:bg-[var(--p-glow)]"
-                      : "border-[var(--border)] bg-[var(--surface)] hover:border-[var(--p-glow)] hover:bg-[var(--p-glow-soft)]"
+                    ${
+                      genre.primary
+                        ? "border-[var(--p-glow)] bg-[var(--p-glow-soft)] hover:bg-[var(--p-glow)]"
+                        : "border-[var(--border)] bg-[var(--surface)] hover:border-[var(--p-glow)] hover:bg-[var(--p-glow-soft)]"
                     }`}
                 >
                   <Icon
@@ -151,8 +195,12 @@ export function VibesSection() {
                     className="mb-2 transition-transform duration-300 group-hover:scale-110"
                     style={{ color: "var(--p)" }}
                   />
-                  <p className="text-sm font-semibold text-[var(--foreground)]">{genre.label}</p>
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5 leading-snug">{genre.desc}</p>
+                  <p className="text-sm font-semibold text-[var(--foreground)]">
+                    {genre.label}
+                  </p>
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5 leading-snug">
+                    {genre.desc}
+                  </p>
                 </div>
               </BlurFade>
             );

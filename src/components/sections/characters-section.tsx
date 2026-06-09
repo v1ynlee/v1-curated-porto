@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowLeftRight, ExternalLink } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowLeftRight,
+  ExternalLink,
+} from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { BlurFade } from "@/components/ui/blur-fade";
@@ -16,17 +21,14 @@ import {
 } from "@/constants/covers";
 import { characterUrl as resolveCharacterUrl } from "@/lib/asset-url";
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
 const allCharacters: Character[] = charactersData as Character[];
 
 // Badge palette by type
 const typeBadge: Record<Character["type"], string> = {
   Manhwa: "text-sky-400 bg-sky-400/10 border-sky-400/30",
-  Manga:  "text-rose-400 bg-rose-400/10 border-rose-400/30",
+  Manga: "text-rose-400 bg-rose-400/10 border-rose-400/30",
   Manhua: "text-amber-400 bg-amber-400/10 border-amber-400/30",
 };
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 /** Resolve a cover template path to a CDN-aware URL. */
 function coverUrl(char: Character, n: number): string {
@@ -91,7 +93,7 @@ function RotatingCharacterCover({ char }: { char: Character }) {
       setVisible(true);
     }, 280);
     return () => clearTimeout(t);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
   const translateOut = dir === "right" ? "-10px" : "10px";
@@ -210,7 +212,9 @@ function CharacterCard({ char }: { char: Character }) {
         {/* Bottom fade */}
         <div
           className="absolute bottom-0 inset-x-0 h-10 pointer-events-none"
-          style={{ background: "linear-gradient(to top, var(--surface), transparent)" }}
+          style={{
+            background: "linear-gradient(to top, var(--surface), transparent)",
+          }}
           aria-hidden="true"
         />
       </div>
@@ -253,9 +257,9 @@ export function CharactersSection() {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
-      loop:           true,
-      dragFree:       true,
-      align:          "start",
+      loop: true,
+      dragFree: true,
+      align: "start",
       slidesToScroll: 1,
     },
     [WheelGesturesPlugin({ forceWheelAxis: "y" })],
@@ -275,7 +279,9 @@ export function CharactersSection() {
         aria-hidden="true"
         className="absolute bottom-0 right-0 w-[500px] h-[300px] blur-[120px]
                    pointer-events-none opacity-10"
-        style={{ background: "radial-gradient(ellipse, var(--s), transparent)" }}
+        style={{
+          background: "radial-gradient(ellipse, var(--s), transparent)",
+        }}
       />
 
       <div className="max-w-7xl mx-auto px-5">
@@ -283,7 +289,10 @@ export function CharactersSection() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <BlurFade delay={0.05} inView>
-              <div className="text-xs font-medium tracking-widest uppercase mb-3" style={{ color: "var(--p)" }}>
+              <div
+                className="text-xs font-medium tracking-widest uppercase mb-3"
+                style={{ color: "var(--p)" }}
+              >
                 — unforgettable
               </div>
             </BlurFade>
@@ -300,8 +309,8 @@ export function CharactersSection() {
             </BlurFade>
             <BlurFade delay={0.15} inView>
               <p className="text-[var(--muted-foreground)] mt-3 max-w-md text-sm">
-                Characters that stuck with me long after the last page — protagonists,
-                villains, and everyone in between.
+                Characters that stuck with me long after the last page —
+                protagonists, villains, and everyone in between.
               </p>
             </BlurFade>
           </div>
@@ -341,17 +350,30 @@ export function CharactersSection() {
             {/* Edge fades */}
             <div
               className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, var(--section-bg), transparent)" }}
+              style={{
+                background:
+                  "linear-gradient(to right, var(--section-bg), transparent)",
+              }}
               aria-hidden="true"
             />
             <div
               className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, var(--section-bg), transparent)" }}
+              style={{
+                background:
+                  "linear-gradient(to left, var(--section-bg), transparent)",
+              }}
               aria-hidden="true"
             />
 
-            <div ref={emblaRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
-              <div className="flex gap-4" role="list" aria-label="Character cards">
+            <div
+              ref={emblaRef}
+              className="overflow-hidden cursor-grab active:cursor-grabbing"
+            >
+              <div
+                className="flex gap-4"
+                role="list"
+                aria-label="Character cards"
+              >
                 {displayed.map((char) => (
                   <div
                     key={char.id}
@@ -369,11 +391,19 @@ export function CharactersSection() {
         {/* ── Scroll hint ──────────────────────────────────────────────────── */}
         <BlurFade delay={0.35} inView>
           <div className="flex items-center justify-center gap-2 mt-6">
-            <ArrowLeftRight size={13} style={{ color: "var(--muted-foreground)" }} aria-hidden="true" />
+            <ArrowLeftRight
+              size={13}
+              style={{ color: "var(--muted-foreground)" }}
+              aria-hidden="true"
+            />
             <span className="text-xs tracking-widest text-[var(--muted-foreground)]">
               Drag, swipe, or scroll to explore
             </span>
-            <ArrowLeftRight size={13} style={{ color: "var(--muted-foreground)" }} aria-hidden="true" />
+            <ArrowLeftRight
+              size={13}
+              style={{ color: "var(--muted-foreground)" }}
+              aria-hidden="true"
+            />
           </div>
         </BlurFade>
       </div>

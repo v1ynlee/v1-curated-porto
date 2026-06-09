@@ -51,17 +51,17 @@ export function BackToTop() {
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLButtonElement;
-        el.style.background  = "var(--p)";
-        el.style.color       = "#fff";
+        el.style.background = "var(--p)";
+        el.style.color = "#fff";
         el.style.borderColor = "var(--p)";
-        el.style.boxShadow   = "0 0 24px var(--p-glow)";
+        el.style.boxShadow = "0 0 24px var(--p-glow)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLButtonElement;
-        el.style.background  = "var(--surface)";
-        el.style.color       = "var(--p)";
+        el.style.background = "var(--surface)";
+        el.style.color = "var(--p)";
         el.style.borderColor = "var(--border)";
-        el.style.boxShadow   = "0 0 16px var(--p-glow-soft)";
+        el.style.boxShadow = "0 0 16px var(--p-glow-soft)";
       }}
     >
       <ArrowUp size={16} aria-hidden="true" />

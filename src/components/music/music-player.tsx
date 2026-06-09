@@ -46,7 +46,10 @@ function MarqueeTitle({
     >
       <span
         className="inline-block"
-        style={{ animation: `marquee-title ${speed}s linear infinite`, paddingRight: "2rem" }}
+        style={{
+          animation: `marquee-title ${speed}s linear infinite`,
+          paddingRight: "2rem",
+        }}
         title={title}
       >
         {title}
@@ -111,7 +114,9 @@ export function MusicPlayer() {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
   // Initialise playlist visibility from config default
-  const [showPlaylist, setShowPlaylist] = useState<boolean>(musicPlayerConfig.showPlaylist);
+  const [showPlaylist, setShowPlaylist] = useState<boolean>(
+    musicPlayerConfig.showPlaylist,
+  );
 
   /** Playlist scroll container — we stop Lenis from hijacking it. */
   const playlistRef = useRef<HTMLDivElement>(null);
@@ -165,7 +170,8 @@ export function MusicPlayer() {
         style={{
           background: visible ? "var(--p)" : "var(--surface)",
           border: `1px solid ${visible ? "var(--p)" : "var(--border)"}`,
-          boxShadow: isPlaying && !visible ? `0 0 0 2px var(--p-glow)` : undefined,
+          boxShadow:
+            isPlaying && !visible ? `0 0 0 2px var(--p-glow)` : undefined,
         }}
         className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
         onKeyDown={(e) => {
@@ -180,7 +186,9 @@ export function MusicPlayer() {
         ) : (
           <Music2
             size={18}
-            style={{ color: isPlaying ? "var(--p)" : "var(--muted-foreground)" }}
+            style={{
+              color: isPlaying ? "var(--p)" : "var(--muted-foreground)",
+            }}
             className={isPlaying ? "animate-pulse" : ""}
           />
         )}
@@ -205,7 +213,10 @@ export function MusicPlayer() {
         <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
           <div className="flex items-center gap-2">
             <Music2 size={14} style={{ color: "var(--p)" }} />
-            <span className="text-xs font-semibold tracking-wide" style={{ color: "var(--foreground)" }}>
+            <span
+              className="text-xs font-semibold tracking-wide"
+              style={{ color: "var(--foreground)" }}
+            >
               Mood Player
             </span>
           </div>
@@ -229,7 +240,9 @@ export function MusicPlayer() {
                 aria-label="Toggle playlist"
                 onClick={() => setShowPlaylist((v) => !v)}
                 className="p-1.5 rounded-lg hover:bg-[var(--accent)] transition-colors"
-                style={{ color: showPlaylist ? "var(--p)" : "var(--muted-foreground)" }}
+                style={{
+                  color: showPlaylist ? "var(--p)" : "var(--muted-foreground)",
+                }}
               >
                 <ListMusic size={13} />
               </button>
@@ -263,7 +276,10 @@ export function MusicPlayer() {
 
             {/* Scrolling title */}
             <div className="flex-1 min-w-0 overflow-hidden">
-              <MarqueeTitle title={current.title} className="text-sm font-semibold" />
+              <MarqueeTitle
+                title={current.title}
+                className="text-sm font-semibold"
+              />
             </div>
 
             {/* Loading spinner */}
@@ -292,7 +308,10 @@ export function MusicPlayer() {
               background: `linear-gradient(to right, var(--p) ${progressPct}%, var(--border) ${progressPct}%)`,
             }}
           />
-          <div className="flex justify-between text-xs mt-1" style={{ color: "var(--muted-foreground)" }}>
+          <div
+            className="flex justify-between text-xs mt-1"
+            style={{ color: "var(--muted-foreground)" }}
+          >
             <span>{formatTime(progress)}</span>
             <span>{formatTime(duration)}</span>
           </div>
@@ -320,7 +339,11 @@ export function MusicPlayer() {
               boxShadow: `0 4px 16px var(--p-glow)`,
             }}
           >
-            {isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
+            {isPlaying ? (
+              <Pause size={16} />
+            ) : (
+              <Play size={16} className="ml-0.5" />
+            )}
           </button>
 
           <button
@@ -383,7 +406,8 @@ export function MusicPlayer() {
                 onClick={() => skipTo(idx)}
                 className="w-full flex items-center gap-3 px-3 py-2 text-left transition-colors hover:bg-[var(--accent)]"
                 style={{
-                  background: idx === currentIndex ? "var(--p-glow-soft)" : undefined,
+                  background:
+                    idx === currentIndex ? "var(--p-glow-soft)" : undefined,
                 }}
               >
                 {/* Row cover */}
@@ -392,7 +416,12 @@ export function MusicPlayer() {
                 {/* Row index / playing indicator */}
                 <span
                   className="text-xs w-4 text-center flex-shrink-0 tabular-nums"
-                  style={{ color: idx === currentIndex ? "var(--p)" : "var(--muted-foreground)" }}
+                  style={{
+                    color:
+                      idx === currentIndex
+                        ? "var(--p)"
+                        : "var(--muted-foreground)",
+                  }}
                 >
                   {idx === currentIndex && isPlaying ? "▶" : idx + 1}
                 </span>
@@ -400,7 +429,10 @@ export function MusicPlayer() {
                 {/* Row title — marquee for long names, static for short ones */}
                 <div
                   className="flex-1 min-w-0 overflow-hidden"
-                  style={{ color: idx === currentIndex ? "var(--p)" : "var(--foreground)" }}
+                  style={{
+                    color:
+                      idx === currentIndex ? "var(--p)" : "var(--foreground)",
+                  }}
                 >
                   <MarqueeTitle
                     title={track.title}

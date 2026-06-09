@@ -23,7 +23,6 @@ type HighlightPhrase = {
   action: "underline" | "highlight";
 };
 
-
 export interface AboutData {
   /** Small eyebrow label above the section heading, e.g. "— who am i" */
   sectionLabel: string;

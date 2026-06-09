@@ -4,7 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { useColorTheme, themes, type ColorTheme } from "@/components/providers/color-theme-provider";
+import {
+  useColorTheme,
+  themes,
+  type ColorTheme,
+} from "@/components/providers/color-theme-provider";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -12,8 +16,6 @@ const navLinks = [
   { href: "#vibes", label: "Vibes" },
   { href: "#connect", label: "Connect" },
 ] as const;
-
-
 
 function ThemePanel({ onClose }: { onClose: () => void }) {
   const { colorTheme, setColorTheme } = useColorTheme();
@@ -41,7 +43,10 @@ function ThemePanel({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Divider */}
-      <div className="my-2 border-t border-[var(--border)]" aria-hidden="true" />
+      <div
+        className="my-2 border-t border-[var(--border)]"
+        aria-hidden="true"
+      />
 
       {/* Color palette */}
       <div className="px-3">
@@ -135,7 +140,9 @@ export function Navbar() {
     setMobileOpen(false);
     const el = document.querySelector(href);
     if (el) {
-      const w = window as typeof window & { lenis?: { scrollTo: (target: Element, opts?: object) => void } };
+      const w = window as typeof window & {
+        lenis?: { scrollTo: (target: Element, opts?: object) => void };
+      };
       if (w.lenis) {
         w.lenis.scrollTo(el, { offset: -80 });
       } else {

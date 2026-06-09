@@ -6,13 +6,32 @@ const nextConfig: NextConfig = {
   // ── Image optimization ────────────────────────────────────────────────────
   images: {
     // Allow Next/Image to load and optimise images from Cloudflare R2.
+    // Split into separate entries — Next.js remotePatterns does not support
+    // shell-style brace expansion {a,b,c} in pathname.
     remotePatterns: [
       {
         protocol: "https",
         hostname: CDN_HOSTNAME,
         port: "",
-        // Scope to the exact CDN-backed paths to avoid open-redirect risk.
-        pathname: "/{covers,characters,music/covers}/**",
+        pathname: "/covers/**",
+      },
+      {
+        protocol: "https",
+        hostname: CDN_HOSTNAME,
+        port: "",
+        pathname: "/characters/**",
+      },
+      {
+        protocol: "https",
+        hostname: CDN_HOSTNAME,
+        port: "",
+        pathname: "/music/covers/**",
+      },
+      {
+        protocol: "https",
+        hostname: CDN_HOSTNAME,
+        port: "",
+        pathname: "/music/audio/**",
       },
     ],
     // Preserve webp output format for R2-hosted assets.

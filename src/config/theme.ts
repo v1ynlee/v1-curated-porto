@@ -24,12 +24,12 @@ export interface ThemeDefinition {
 }
 
 export const themes: ThemeDefinition[] = [
-  { id: "teal",       name: "Teal + Cyan", color: "#14b8a6" },
-  { id: "cyber-blue", name: "Cyber Blue",  color: "#3b82f6" },
-  { id: "emerald",    name: "Emerald",     color: "#10b981" },
-  { id: "purple",     name: "Purple",      color: "#8b5cf6" },
-  { id: "orange",     name: "Orange",      color: "#f97316" },
-  { id: "red",        name: "Red",         color: "#ef4444" },
+  { id: "teal", name: "Teal + Cyan", color: "#14b8a6" },
+  { id: "cyber-blue", name: "Cyber Blue", color: "#3b82f6" },
+  { id: "emerald", name: "Emerald", color: "#10b981" },
+  { id: "purple", name: "Purple", color: "#8b5cf6" },
+  { id: "orange", name: "Orange", color: "#f97316" },
+  { id: "red", name: "Red", color: "#ef4444" },
 ];
 
 /** The theme id used when no persisted preference exists. */

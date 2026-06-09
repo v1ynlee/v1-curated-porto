@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { BorderBeam } from "@/components/ui/border-beam";
-import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/ui/scroll-based-velocity";
 import Text3DFlip from "@/components/ui/text-3d-flip";
 import {
   Star,
@@ -33,24 +36,27 @@ import {
 import { coverUrl as resolveCoverUrl } from "@/lib/asset-url";
 
 // ─── Static maps ──────────────────────────────────────────────────────────────
-const StatusIcon: Record<StatusType, React.ComponentType<{ size?: number; className?: string }>> = {
+const StatusIcon: Record<
+  StatusType,
+  React.ComponentType<{ size?: number; className?: string }>
+> = {
   Completed: CheckCircle,
-  Ongoing:   RefreshCw,
-  Hiatus:    Clock,
-  Axed:      XCircle,
+  Ongoing: RefreshCw,
+  Hiatus: Clock,
+  Axed: XCircle,
 };
 
 const genreIconMap: Record<string, React.ComponentType<{ size?: number }>> = {
-  Action:        Swords,
-  Fantasy:       Zap,
-  Apocalypse:    Flame,
-  Historical:    Shield,
-  Mystery:       Brain,
+  Action: Swords,
+  Fantasy: Zap,
+  Apocalypse: Flame,
+  Historical: Shield,
+  Mystery: Brain,
   Philosophical: Brain,
-  "Sci-fi":      Layers,
+  "Sci-fi": Layers,
   "Dark Fantasy": Flame,
-  Romance:       Heart,
-  Sports:        Trophy,
+  Romance: Heart,
+  Sports: Trophy,
   Psychological: Brain,
 };
 
@@ -135,7 +141,7 @@ function RotatingCover({
       setVisible(true);
     }, 300); // half of CSS transition duration
     return () => clearTimeout(t);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
   const translateOut = displayDir === "right" ? "-12px" : "12px";
@@ -223,7 +229,10 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
         }}
       >
         {/* Cover — full portrait ratio, no height cap */}
-        <div className="relative w-full overflow-hidden bg-[var(--accent)]" style={{ aspectRatio: "2/3" }}>
+        <div
+          className="relative w-full overflow-hidden bg-[var(--accent)]"
+          style={{ aspectRatio: "2/3" }}
+        >
           <RotatingCover item={item} priority={index < 4} />
 
           {/* Status badge */}
@@ -232,26 +241,36 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
                        rounded-full text-[10px] font-semibold border backdrop-blur-sm"
             style={{
               borderColor: `${item.neonFrom}55`,
-              background:  `${item.neonFrom}22`,
-              color:        item.neonFrom,
+              background: `${item.neonFrom}22`,
+              color: item.neonFrom,
             }}
           >
             <StatusIconComp size={9} />
             {item.status}
           </div>
 
-          <BorderBeam size={80} duration={10} colorFrom={item.neonFrom} colorTo={item.neonTo} />
+          <BorderBeam
+            size={80}
+            duration={10}
+            colorFrom={item.neonFrom}
+            colorTo={item.neonTo}
+          />
         </div>
 
         {/* Body */}
         <div className="flex flex-col flex-1 p-4 gap-2">
           {/* Origin */}
-          <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: item.neonFrom }}>
+          <span
+            className="text-[10px] font-bold uppercase tracking-widest"
+            style={{ color: item.neonFrom }}
+          >
             {item.origin}
           </span>
 
           {/* Title */}
-          <h3 className="text-base font-bold text-[var(--foreground)] leading-snug">{item.title}</h3>
+          <h3 className="text-base font-bold text-[var(--foreground)] leading-snug">
+            {item.title}
+          </h3>
 
           {/* Genres */}
           <div className="flex flex-wrap gap-1">
@@ -289,11 +308,20 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
 
           {/* Footer */}
           <div className="flex items-center justify-between pt-1 mt-auto border-t border-[var(--border)]">
-            <span className="text-[10px] text-[var(--muted-foreground)]">{item.chapters}</span>
+            <span className="text-[10px] text-[var(--muted-foreground)]">
+              {item.chapters}
+            </span>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <Star size={11} style={{ color: item.neonFrom }} fill={item.neonFrom} />
-                <span className="text-xs font-bold" style={{ color: item.neonFrom }}>
+                <Star
+                  size={11}
+                  style={{ color: item.neonFrom }}
+                  fill={item.neonFrom}
+                />
+                <span
+                  className="text-xs font-bold"
+                  style={{ color: item.neonFrom }}
+                >
                   {item.rating}
                 </span>
               </div>
@@ -328,14 +356,19 @@ export function FavoritesSection() {
         aria-hidden="true"
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                    w-[800px] h-[400px] blur-[120px] pointer-events-none opacity-10"
-        style={{ background: "radial-gradient(ellipse, var(--p), transparent)" }}
+        style={{
+          background: "radial-gradient(ellipse, var(--p), transparent)",
+        }}
       />
 
       <div className="max-w-7xl mx-auto px-5">
         {/* Header */}
         <div className="text-center mb-16">
           <BlurFade delay={0.05} inView>
-            <div className="text-xs font-medium tracking-widest uppercase mb-3" style={{ color: "var(--p)" }}>
+            <div
+              className="text-xs font-medium tracking-widest uppercase mb-3"
+              style={{ color: "var(--p)" }}
+            >
               — top picks
             </div>
           </BlurFade>
@@ -352,7 +385,8 @@ export function FavoritesSection() {
           </BlurFade>
           <BlurFade delay={0.15} inView>
             <p className="text-[var(--muted-foreground)] max-w-lg mx-auto">
-              Eight titles that left a permanent mark — across manhwa, manhua, and manga. Each one a masterpiece.
+              Eight titles that left a permanent mark — across manhwa, manhua,
+              and manga. Each one a masterpiece.
             </p>
           </BlurFade>
         </div>
@@ -368,14 +402,23 @@ export function FavoritesSection() {
         <BlurFade delay={0.3} inView>
           <div className="mt-14 py-4 border-y border-[var(--border)]">
             <ScrollVelocityContainer>
-              <ScrollVelocityRow baseVelocity={3} direction={1} className="py-2">
+              <ScrollVelocityRow
+                baseVelocity={3}
+                direction={1}
+                className="py-2"
+              >
                 {marqueeItems.map((title) => (
                   <div
                     key={title}
                     className="mx-8 flex items-center gap-3 text-sm font-medium
                                text-[var(--muted-foreground)] whitespace-nowrap"
                   >
-                    <Star size={10} style={{ color: "var(--p)" }} fill="var(--p)" aria-hidden="true" />
+                    <Star
+                      size={10}
+                      style={{ color: "var(--p)" }}
+                      fill="var(--p)"
+                      aria-hidden="true"
+                    />
                     {title}
                   </div>
                 ))}

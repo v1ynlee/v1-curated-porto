@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 const CDN_HOSTNAME = "cdn.curated-comics.cyou";
 
 const nextConfig: NextConfig = {
+  // ── Explicit env injection ────────────────────────────────────────────────
+  // Injecting here guarantees the values are embedded by next.config evaluation,
+  // not relying solely on process.env replacement in source files (which can be
+  // served from Vercel's build cache when source files haven't changed).
+  env: {
+    NEXT_PUBLIC_CDN_URL:
+      process.env.NEXT_PUBLIC_CDN_URL ?? "https://cdn.curated-comics.cyou",
+    NEXT_PUBLIC_SITE_URL:
+      process.env.NEXT_PUBLIC_SITE_URL ?? "https://curated-comics.cyou",
+  },
   // ── Image optimization ────────────────────────────────────────────────────
   images: {
     // Allow Next/Image to load and optimise images from Cloudflare R2.

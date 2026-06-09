@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: `${siteUrl}/og-image.png`,
+        url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "v1ynlee – a hobby portfolio for manhwa, manhua and manga readers",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     creator: "@v1ynlee",
     title: "v1ynlee · just a hobbyist",
     description: siteDescription,
-    images: [`${siteUrl}/og-image.png`],
+    images: [`${siteUrl}/og-image.jpg`],
   },
 };
 
@@ -101,9 +101,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <ColorThemeProvider>
-            <LenisProvider>
-              {children}
-            </LenisProvider>
+            <LenisProvider>{children}</LenisProvider>
           </ColorThemeProvider>
         </ThemeProvider>
       </body>

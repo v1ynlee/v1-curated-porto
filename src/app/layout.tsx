@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ColorThemeProvider } from "@/components/providers/color-theme-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
+import { SITE_URL } from "@/config/assets";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,13 +18,12 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const siteUrl = "https://v1ynlee.vercel.app";
 const siteName = "v1ynlee";
 const siteDescription =
   "A hobby-focused personal portfolio of v1ynlee — a passionate reader of manhwa, manhua, and manga. Discover favorite titles, genre picks, and mood playlists.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "v1ynlee · just a hobbyist",
     template: "%s · v1ynlee",
@@ -54,18 +54,18 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: SITE_URL,
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
+    url: SITE_URL,
     siteName,
     title: "v1ynlee · just a hobbyist",
     description: siteDescription,
     images: [
       {
-        url: `${siteUrl}/og-image.jpg`,
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "v1ynlee – a hobby portfolio for manhwa, manhua and manga readers",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     creator: "@v1ynlee",
     title: "v1ynlee · just a hobbyist",
     description: siteDescription,
-    images: [`${siteUrl}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.jpg`],
   },
 };
 

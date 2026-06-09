@@ -34,11 +34,7 @@
       "id": 2,
       "title": "Author Of My Own Destiny",
       "origin": "Manhwa",
-      "genres": [
-        "Fantasy",
-        "Romance",
-        "Shoujo"
-      ],
+      "genres": ["Fantasy", "Romance", "Shoujo"],
       "tags": [
         "Abused Female Lead",
         "Abused Male Lead",
@@ -124,11 +120,7 @@
       "id": 5,
       "title": "Designated Bully",
       "origin": "Manhwa",
-      "genres": [
-        "Action",
-        "School Life",
-        "Seinen"
-      ],
+      "genres": ["Action", "School Life", "Seinen"],
       "tags": [
         "21st Century",
         "Adult Protagonist",
@@ -181,11 +173,7 @@
       "id": 7,
       "title": "Into The Light Once Again",
       "origin": "Manhwa",
-      "genres": [
-        "Fantasy",
-        "Romance",
-        "Shoujo"
-      ],
+      "genres": ["Fantasy", "Romance", "Shoujo"],
       "tags": [
         "Age Gap",
         "Attempted Murder",
@@ -208,13 +196,7 @@
       "id": 8,
       "title": "My Husband Hides His Beauty",
       "origin": "Manhwa",
-      "genres": [
-        "Comedy",
-        "Fantasy",
-        "Historical",
-        "Romance",
-        "Shoujo"
-      ],
+      "genres": ["Comedy", "Fantasy", "Historical", "Romance", "Shoujo"],
       "tags": [
         "Angel/s",
         "Arranged Marriage",
@@ -393,13 +375,7 @@
       "id": 14,
       "title": "The Regressed Mercenarys Machinations",
       "origin": "Manhwa",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Drama",
-        "Fantasy",
-        "Shounen"
-      ],
+      "genres": ["Action", "Adventure", "Drama", "Fantasy", "Shounen"],
       "tags": [
         "Atypical Art Style",
         "Bad Reputation",
@@ -454,12 +430,7 @@
       "id": 16,
       "title": "Who Made Me A Princess",
       "origin": "Manhwa",
-      "genres": [
-        "Comedy",
-        "Fantasy",
-        "Shoujo",
-        "Slice of Life"
-      ],
+      "genres": ["Comedy", "Fantasy", "Shoujo", "Slice of Life"],
       "tags": [
         "Age Gap",
         "Age Progression",
@@ -482,12 +453,7 @@
       "id": 17,
       "title": "Youth Of Revelation",
       "origin": "Manhwa",
-      "genres": [
-        "Drama",
-        "Romance",
-        "School Life",
-        "Shoujo"
-      ],
+      "genres": ["Drama", "Romance", "School Life", "Shoujo"],
       "tags": [
         "21st Century",
         "Absent Parent/s",

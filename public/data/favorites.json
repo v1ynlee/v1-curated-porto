@@ -21,7 +21,7 @@
       ],
       "description": "The past has changed, but like a fiery comet, he still comes. Mugi Hwa, the one without equal, slashed through Murim's skies with his sword, toppling every lord who dared to face him-even Cheonma, ...",
       "rating": 8.34,
-      "chapters": "104 Chapters",
+      "chapters": "~105 Chapters",
       "status": "Ongoing",
       "neonFrom": "#44cdf5",
       "neonTo": "#7e0d35",
@@ -44,8 +44,8 @@
       ],
       "description": "Evil mage Fiona Green was destined to die at the hands of the protagonist couple in *The Emperor and the Saint*. That is, until the story's author became Fiona herself! Though mistreated, cast out ...",
       "rating": 7.64,
-      "chapters": "109 Chapters",
-      "status": "Ongoing",
+      "chapters": "132 + 18 Side Stories",
+      "status": "Completed",
       "neonFrom": "#3359d4",
       "neonTo": "#c258cc",
       "slug": "author-of-my-own-destiny",
@@ -55,7 +55,7 @@
     },
     {
       "id": 3,
-      "title": "Black Haze",
+      "title": "Black Haze (2025)",
       "origin": "Manhwa",
       "genres": [
         "Action",
@@ -76,14 +76,14 @@
       ],
       "description": "After a mission gone awry, the doubtful main character, Rood, is sent to a famous magic school, Helios.  Here, he must protect an important person's son who has a very bad time at the school.  [Ori...",
       "rating": 8.51,
-      "chapters": "228 Chapters",
-      "status": "Axed",
+      "chapters": "~74 Chapters",
+      "status": "Ongoing",
       "neonFrom": "#c2ed77",
       "neonTo": "#0a90cc",
       "slug": "black-haze",
       "cover": "/covers/black-haze-<range>.webp",
       "coverTotal": 1,
-      "url": "https://page.kakao.com/content/66345638"
+      "url": "https://page.kakao.com/content/65986358"
     },
     {
       "id": 4,
@@ -107,14 +107,14 @@
       ],
       "description": "Qi, swords, martial artists... and robots and spaceships?! The year is 3077, thousands of years after the heyday of the martial arts realm. Humanity inhabits the stars, governed by interstellar marti...",
       "rating": 7.14,
-      "chapters": "91 Chapters",
+      "chapters": "~94 Chapters",
       "status": "Ongoing",
       "neonFrom": "#f07ce2",
       "neonTo": "#40ce64",
       "slug": "cosmic-heavenly-demon-3077",
       "cover": "/covers/cosmic-heavenly-demon-3077-<range>.webp",
       "coverTotal": 1,
-      "url": "https://comic.naver.com/webtoon/list?titleId=831154"
+      "url": "https://comic.naver.com/webtoon/list?titleId=829195"
     },
     {
       "id": 5,
@@ -130,7 +130,7 @@
       ],
       "description": "After dropping out of high school, Daegun Kwon is working part-time at a convenience store while preparing to get his GED. After being harassed by a group of punks during work and teaching them a l...",
       "rating": 7.2,
-      "chapters": "185 Chapters",
+      "chapters": "~187 Chapters",
       "status": "Ongoing",
       "neonFrom": "#04b160",
       "neonTo": "#6477c4",
@@ -160,14 +160,14 @@
       ],
       "description": "Fabre, a famous million-viewer streamer known for his daring encounters with venomous creatures, is bitten by a black mamba while filming in Africa and wakes up in the mystical world of Murim. To h...",
       "rating": 7.24,
-      "chapters": "73 Chapters",
+      "chapters": "~91 Chapters",
       "status": "Ongoing",
       "neonFrom": "#a645f9",
       "neonTo": "#48946d",
       "slug": "entomologist-in-sichuan-tang-clan",
       "cover": "/covers/entomologist-in-sichuan-tang-clan-<range>.webp",
       "coverTotal": 3,
-      "url": "https://www.webtoons.com/en/fantasy/the-sichuan-tang-clans-entomologist/list?title_no=8390"
+      "url": "https://comic.naver.com/webtoon/list?titleId=833702"
     },
     {
       "id": 7,
@@ -183,7 +183,7 @@
       ],
       "description": "When Princess Alisa is framed for a terrible crime, she is shocked to learn that her own family wants her executed. After losing her will to live, she finds herself reborn as the princess of a riva...",
       "rating": 7.25,
-      "chapters": "85 Chapters",
+      "chapters": "114 Chapters",
       "status": "Completed",
       "neonFrom": "#4b30c2",
       "neonTo": "#7af985",
@@ -213,7 +213,7 @@
       "slug": "my-husband-hides-his-beauty",
       "cover": "/covers/my-husband-hides-his-beauty-<range>.webp",
       "coverTotal": 3,
-      "url": "https://page.kakao.com/content/55562758"
+      "url": "https://page.kakao.com/content/55383201"
     },
     {
       "id": 9,
@@ -236,18 +236,18 @@
       ],
       "description": "Raised in the slums of Ebelstein, Derek knows all too well that magic cannot bridge social divides. Through harsh lessons and hard-earned discipline, he rises to become a second-tier mage, scraping...",
       "rating": 6.81,
-      "chapters": "28 Chapters",
+      "chapters": "~28 Chapters",
       "status": "Ongoing",
       "neonFrom": "#a4ef8b",
       "neonTo": "#12dc83",
       "slug": "noble-lady-reformation-guide",
       "cover": "/covers/noble-lady-reformation-guide-<range>.webp",
       "coverTotal": 2,
-      "url": "https://comic.naver.com/webtoon/list?titleId=821557"
+      "url": "https://comic.naver.com/webtoon/list?titleId=846779"
     },
     {
       "id": 10,
-      "title": "Oh Dangun",
+      "title": "Oh! Dangun",
       "origin": "Manhwa",
       "genres": [
         "Action",
@@ -275,11 +275,11 @@
       "slug": "oh-dangun",
       "cover": "/covers/oh-dangun-<range>.webp",
       "coverTotal": 3,
-      "url": "https://comic.naver.com/webtoon/list?titleId=792455"
+      "url": "https://comic.naver.com/webtoon/list?titleId=820602"
     },
     {
       "id": 11,
-      "title": "Pick Me Up",
+      "title": "Pick Me Up!",
       "origin": "Manhwa",
       "genres": [
         "Action",
@@ -300,14 +300,14 @@
       ],
       "description": "1-Star heroes are just fodder for learning a boss' attack patterns. That was Seojin Han's philosophy when playing the notoriously difficult game Pick Me Up. But after being transported into the gam...",
       "rating": 8.26,
-      "chapters": "204 Chapters",
+      "chapters": "~204 Chapters",
       "status": "Ongoing",
       "neonFrom": "#e11ad1",
       "neonTo": "#41a953",
       "slug": "pick-me-up",
       "cover": "/covers/pick-me-up-<range>.webp",
       "coverTotal": 4,
-      "url": "https://page.kakao.com/content/60655325"
+      "url": "https://page.kakao.com/content/60914825"
     },
     {
       "id": 12,
@@ -331,7 +331,7 @@
       ],
       "description": "When Cheongmyeong of the Mount Hua Sect awakens a hundred years in the future, his last memories are of a bloody battle against the Leader of the Demonic Cult, the evil Cheonma. The battle almost s...",
       "rating": 8.56,
-      "chapters": "165 Chapters",
+      "chapters": "~166 Chapters",
       "status": "Ongoing",
       "neonFrom": "#3f762c",
       "neonTo": "#9c2d63",
@@ -362,18 +362,18 @@
       ],
       "description": "After a lifetime of bloodshed, the Heavenly Demon longs for peace. In his final moments, he uncovers the truth about his power and yearns for a different life. He wakes up in the body of Taesan Bye...",
       "rating": 6.89,
-      "chapters": "84 Chapters",
+      "chapters": "~84 Chapters",
       "status": "Ongoing",
       "neonFrom": "#6d8437",
       "neonTo": "#18671f",
       "slug": "the-heavenly-demon-wants-a-quiet-life",
       "cover": "/covers/the-heavenly-demon-wants-a-quiet-life-<range>.webp",
       "coverTotal": 4,
-      "url": "https://comic.naver.com/webtoon/list?titleId=822187"
+      "url": "https://comic.naver.com/webtoon/list?titleId=834502"
     },
     {
       "id": 14,
-      "title": "The Regressed Mercenarys Machinations",
+      "title": "The Regressed Mercenary's Machinations",
       "origin": "Manhwa",
       "genres": ["Action", "Adventure", "Drama", "Fantasy", "Shounen"],
       "tags": [
@@ -385,14 +385,14 @@
       ],
       "description": "Cecil Perdium, the Mercenary King, was killed in battle before he could avenge his family. As he faces death, he learns that Duke Delphine, the man who caused the downfall of his family, didn't wor...",
       "rating": 7.99,
-      "chapters": "91 Chapters",
+      "chapters": "~92 Chapters",
       "status": "Ongoing",
       "neonFrom": "#2e0c5d",
       "neonTo": "#d7ffc4",
       "slug": "the-regressed-mercenarys-machinations",
       "cover": "/covers/the-regressed-mercenarys-machinations-<range>.webp",
       "coverTotal": 3,
-      "url": "https://comic.naver.com/webtoon/list?titleId=821104"
+      "url": "https://comic.naver.com/webtoon/list?titleId=832557"
     },
     {
       "id": 15,
@@ -417,14 +417,14 @@
       ],
       "description": "The Mad Demon, Jaha Lee, dreams of becoming the God of Martial Arts. Unfortunately, his dreams are dashed after he falls off a cliff while running from the Demonic Cult for stealing the Jade of Hea...",
       "rating": 8.33,
-      "chapters": "199 Chapters",
+      "chapters": "~199 Chapters",
       "status": "Ongoing",
       "neonFrom": "#c63f0a",
       "neonTo": "#b8c55c",
       "slug": "the-return-of-the-crazy-demon",
       "cover": "/covers/the-return-of-the-crazy-demon-<range>.webp",
       "coverTotal": 3,
-      "url": "https://comic.naver.com/webtoon/list?titleId=783052"
+      "url": "https://comic.naver.com/webtoon/list?titleId=776601"
     },
     {
       "id": 16,
@@ -440,14 +440,14 @@
       ],
       "description": "From Seven Seas:   The story of Athanasia, forsaken princess of the Obelian Empire, ends with her execution at the hands of her own father. Except, did it? Her tragic tale is the plot of the novel ...",
       "rating": 8.52,
-      "chapters": "16 Chapters",
+      "chapters": "135 Chapters",
       "status": "Completed",
       "neonFrom": "#0e5093",
       "neonTo": "#2264ac",
       "slug": "who-made-me-a-princess",
       "cover": "/covers/who-made-me-a-princess-<range>.webp",
       "coverTotal": 1,
-      "url": "https://page.kakao.com/content/51760434"
+      "url": "https://page.kakao.com/content/51880368"
     },
     {
       "id": 17,
@@ -463,14 +463,14 @@
       ],
       "description": "A close and dangerous cohabitation with the pseudo-religious son has begun! Chung-ah was swindled by her uncle who she trusted and her parents disappeared, saying they are chasing their missing unc...",
       "rating": 7.51,
-      "chapters": "121 Chapters",
+      "chapters": "135 Chapters",
       "status": "Completed",
       "neonFrom": "#cf6f4a",
       "neonTo": "#3daa11",
       "slug": "youth-of-revelation",
       "cover": "/covers/youth-of-revelation-<range>.webp",
       "coverTotal": 4,
-      "url": "https://comic.naver.com/webtoon/list?titleId=795297"
+      "url": "https://comic.naver.com/webtoon/list?titleId=802079"
     }
   ],
   "marqueeItems": [

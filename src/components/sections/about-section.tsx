@@ -9,6 +9,7 @@ import aboutData from "@/../public/data/about.json";
 import statsData from "@/../public/data/stats.json";
 import type { AboutData } from "@/types/about";
 import type { StatItem } from "@/types/stats";
+import { splitAroundPhrase } from "@/lib/string";
 
 // ─── Typed data ───────────────────────────────────────────────────────────────
 const about = aboutData as AboutData;
@@ -36,25 +37,6 @@ const hobbyTags = about.hobbyTags.map((t) => ({
   icon: iconMap[t.icon] ?? BookOpen,
   text: t.text,
 }));
-
-/**
- * Split a paragraph around a highlighted phrase so we can wrap
- * just that phrase in a <Highlighter> without any surrounding hardcoded text.
- *
- * Returns null when the phrase is not found — falls back to plain text.
- */
-function splitAroundPhrase(
-  text: string,
-  phrase: string,
-): { before: string; match: string; after: string } | null {
-  const idx = text.indexOf(phrase);
-  if (idx === -1) return null;
-  return {
-    before: text.slice(0, idx),
-    match: text.slice(idx, idx + phrase.length),
-    after: text.slice(idx + phrase.length),
-  };
-}
 
 // ─── Section ──────────────────────────────────────────────────────────────────
 export function AboutSection() {

@@ -29,11 +29,12 @@ import {
 import favoritesData from "@/../public/data/favorites.json";
 import type { StatusType, ComicCard } from "@/types/favorites";
 import {
-  COVER_ROTATION_MIN_MS,
-  COVER_ROTATION_MAX_MS,
   FAVORITES_DISPLAY_COUNT,
 } from "@/constants/covers";
+import { MAX_GENRES_SHOW, MAX_TAGS_SHOW } from "@/constants/display";
 import { coverUrl as resolveCoverUrl } from "@/lib/asset-url";
+import { shuffle, pickRandom, randInt } from "@/lib/pick-random";
+import { useCoverRotation } from "@/hooks/use-cover-rotation";
 
 // ─── Static maps ──────────────────────────────────────────────────────────────
 const StatusIcon: Record<
@@ -67,56 +68,12 @@ function coverUrl(item: ComicCard, n: number): string {
   return resolveCoverUrl(item.cover, n);
 }
 
-/** Random integer in [min, max]. */
-function randInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
-/** Fisher-Yates shuffle — returns a new array. */
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const allFavorites: ComicCard[] = favoritesData.favorites as ComicCard[];
 const marqueeItems: string[] = favoritesData.marqueeItems;
 
-// ─── Cover rotation hook ──────────────────────────────────────────────────────
-/**
- * Returns the current cover index (1-based) for an item.
- * Rotates automatically on a random interval when coverTotal > 1.
- * Direction alternates: +1 / -1 to produce a left/right feel in the UI.
- */
-function useCoverRotation(coverTotal: number) {
-  const [idx, setIdx] = useState(() => randInt(1, coverTotal));
-  const [dir, setDir] = useState<"left" | "right">("right");
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (coverTotal <= 1) return; // nothing to rotate
-
-    const schedule = () => {
-      const delay = randInt(COVER_ROTATION_MIN_MS, COVER_ROTATION_MAX_MS);
-      timerRef.current = setTimeout(() => {
-        setDir((prev) => (prev === "right" ? "left" : "right"));
-        setIdx((prev) => (prev % coverTotal) + 1); // 1-based wrap
-        schedule();
-      }, delay);
-    };
-
-    schedule();
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [coverTotal]);
-
-  return { idx, dir };
-}
 
 // ─── Rotating cover image ─────────────────────────────────────────────────────
 function RotatingCover({
@@ -213,6 +170,15 @@ function ReadLink({ url, label }: { url: string; label: string }) {
 function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
   const StatusIconComp = StatusIcon[item.status] ?? BookMarked;
 
+  // Pre-compute mobile picks once per mount — stable across re-renders but
+  // fresh on every page load, giving different results each visit.
+  const [mobileGenres] = useState<string[]>(() =>
+    pickRandom(item.genres, MAX_GENRES_SHOW),
+  );
+  const [mobileTags] = useState<string[]>(() =>
+    pickRandom(item.tags, MAX_TAGS_SHOW),
+  );
+
   return (
     <BlurFade delay={0.05 * index} inView>
       <article
@@ -272,8 +238,25 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
             {item.title}
           </h3>
 
-          {/* Genres */}
-          <div className="flex flex-wrap gap-1">
+          {/* Genres — mobile: MAX_GENRES_SHOW random picks | desktop: full list */}
+          {/* Mobile */}
+          <div className="flex flex-wrap gap-1 sm:hidden">
+            {mobileGenres.map((g) => {
+              const Icon = genreIconMap[g] ?? BookMarked;
+              return (
+                <span
+                  key={g}
+                  className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px]
+                             border border-[var(--border)] text-[var(--muted-foreground)] bg-[var(--accent)]"
+                >
+                  <Icon size={9} />
+                  {g}
+                </span>
+              );
+            })}
+          </div>
+          {/* Desktop */}
+          <div className="hidden sm:flex flex-wrap gap-1">
             {item.genres.map((g) => {
               const Icon = genreIconMap[g] ?? BookMarked;
               return (
@@ -294,8 +277,20 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
             {item.description}
           </p>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1">
+          {/* Tags — mobile: MAX_TAGS_SHOW random picks | desktop: full list (capped at 3) */}
+          {/* Mobile */}
+          <div className="flex flex-wrap gap-1 sm:hidden">
+            {mobileTags.map((tag, i) => (
+              <span
+                key={`${tag}-${i}`}
+                className="px-1.5 py-0.5 rounded text-[9px] border border-[var(--border)] text-[var(--muted-foreground)]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          {/* Desktop */}
+          <div className="hidden sm:flex flex-wrap gap-1">
             {item.tags.slice(0, 3).map((tag, i) => (
               <span
                 key={`${tag}-${i}`}
@@ -334,6 +329,8 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
     </BlurFade>
   );
 }
+
+
 
 // ─── Section ──────────────────────────────────────────────────────────────────
 export function FavoritesSection() {

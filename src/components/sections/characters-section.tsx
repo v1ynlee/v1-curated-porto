@@ -15,11 +15,11 @@ import Text3DFlip from "@/components/ui/text-3d-flip";
 import type { Character } from "@/types/character";
 import charactersData from "@/../public/data/characters.json";
 import {
-  COVER_ROTATION_MIN_MS,
-  COVER_ROTATION_MAX_MS,
   CHARACTERS_DISPLAY_COUNT,
 } from "@/constants/covers";
 import { characterUrl as resolveCharacterUrl } from "@/lib/asset-url";
+import { shuffle, randInt } from "@/lib/pick-random";
+import { useCoverRotation } from "@/hooks/use-cover-rotation";
 
 const allCharacters: Character[] = charactersData as Character[];
 
@@ -35,47 +35,6 @@ function coverUrl(char: Character, n: number): string {
   return resolveCharacterUrl(char.cover, n);
 }
 
-/** Random integer in [min, max]. */
-function randInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/** Fisher-Yates shuffle — returns a new array. */
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-// ─── Cover rotation hook ──────────────────────────────────────────────────────
-function useCoverRotation(coverTotal: number) {
-  const [idx, setIdx] = useState(() => randInt(1, Math.max(1, coverTotal)));
-  const [dir, setDir] = useState<"left" | "right">("right");
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (coverTotal <= 1) return;
-
-    const schedule = () => {
-      const delay = randInt(COVER_ROTATION_MIN_MS, COVER_ROTATION_MAX_MS);
-      timerRef.current = setTimeout(() => {
-        setDir((prev) => (prev === "right" ? "left" : "right"));
-        setIdx((prev) => (prev % coverTotal) + 1);
-        schedule();
-      }, delay);
-    };
-
-    schedule();
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [coverTotal]);
-
-  return { idx, dir };
-}
 
 // ─── Rotating cover for character ─────────────────────────────────────────────
 function RotatingCharacterCover({ char }: { char: Character }) {

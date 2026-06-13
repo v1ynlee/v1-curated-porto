@@ -33,4 +33,4 @@ export const themes: ThemeDefinition[] = [
 ];
 
 /** The theme id used when no persisted preference exists. */
-export const DEFAULT_THEME_ID = "teal";
+export const DEFAULT_THEME_ID = "purple";

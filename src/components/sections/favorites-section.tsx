@@ -28,9 +28,7 @@ import {
 } from "lucide-react";
 import favoritesData from "@/../public/data/favorites.json";
 import type { StatusType, ComicCard } from "@/types/favorites";
-import {
-  FAVORITES_DISPLAY_COUNT,
-} from "@/constants/covers";
+import { FAVORITES_DISPLAY_COUNT } from "@/constants/covers";
 import { MAX_GENRES_SHOW, MAX_TAGS_SHOW } from "@/constants/display";
 import { coverUrl as resolveCoverUrl } from "@/lib/asset-url";
 import { shuffle, pickRandom, randInt } from "@/lib/pick-random";
@@ -68,12 +66,9 @@ function coverUrl(item: ComicCard, n: number): string {
   return resolveCoverUrl(item.cover, n);
 }
 
-
-
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const allFavorites: ComicCard[] = favoritesData.favorites as ComicCard[];
 const marqueeItems: string[] = favoritesData.marqueeItems;
-
 
 // ─── Rotating cover image ─────────────────────────────────────────────────────
 function RotatingCover({
@@ -329,8 +324,6 @@ function FavoriteCard({ item, index }: { item: ComicCard; index: number }) {
     </BlurFade>
   );
 }
-
-
 
 // ─── Section ──────────────────────────────────────────────────────────────────
 export function FavoritesSection() {

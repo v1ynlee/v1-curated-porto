@@ -14,9 +14,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import Text3DFlip from "@/components/ui/text-3d-flip";
 import type { Character } from "@/types/character";
 import charactersData from "@/../public/data/characters.json";
-import {
-  CHARACTERS_DISPLAY_COUNT,
-} from "@/constants/covers";
+import { CHARACTERS_DISPLAY_COUNT } from "@/constants/covers";
 import { characterUrl as resolveCharacterUrl } from "@/lib/asset-url";
 import { shuffle, randInt } from "@/lib/pick-random";
 import { useCoverRotation } from "@/hooks/use-cover-rotation";
@@ -34,7 +32,6 @@ const typeBadge: Record<Character["type"], string> = {
 function coverUrl(char: Character, n: number): string {
   return resolveCharacterUrl(char.cover, n);
 }
-
 
 // ─── Rotating cover for character ─────────────────────────────────────────────
 function RotatingCharacterCover({ char }: { char: Character }) {

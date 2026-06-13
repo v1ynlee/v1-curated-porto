@@ -27,10 +27,9 @@ export function ColorThemeProvider({
 
   useEffect(() => {
     const saved = localStorage.getItem("color-theme") as ColorTheme | null;
-    if (saved && themes.some((t) => t.id === saved)) {
-      setColorThemeState(saved);
-      applyColorTheme(saved);
-    }
+    const active = saved && themes.some((t) => t.id === saved) ? saved : DEFAULT_THEME_ID;
+    setColorThemeState(active);
+    applyColorTheme(active);
   }, []);
 
   const setColorTheme = (theme: ColorTheme) => {
@@ -47,7 +46,9 @@ export function ColorThemeProvider({
 }
 
 function applyColorTheme(theme: ColorTheme) {
-  if (theme === DEFAULT_THEME_ID) {
+  // "teal" is the CSS baseline (:root) — no attribute needed.
+  // Every other theme requires the attribute for its [data-color-theme="..."] rule.
+  if (theme === "teal") {
     document.documentElement.removeAttribute("data-color-theme");
   } else {
     document.documentElement.setAttribute("data-color-theme", theme);
